@@ -2,35 +2,35 @@
 
 A controlled Blue Team security assessment using a local DVWA lab, Docker, Wireshark, web-server logs, and Python-based log analysis.
 
-## Repository contents
+## Project structure
 
-| Item | Description |
+| Folder | Contents |
 |---|---|
-| `Blue_Team_Task_Report_Final_report.pdf` | Final assessment report |
-| `DVWA-master hack secure task.zip` | Local DVWA lab project archive |
-| `Archive.zip` | Supporting evidence archive |
-| `detect_task3.py` | Python script for pattern-based web-log analysis |
-| `task3_sample_rules.txt` | Illustrative detection rules; not executed SIEM/Suricata rules |
-| `report/README.md` | Report folder notes |
+| [reports/](reports/) | Final PDF report and report notes |
+| [scripts/](scripts/) | Python log-analysis script |
+| [rules/](rules/) | Illustrative detection-rule descriptions |
+| [lab/](lab/) | DVWA project ZIP |
+| [evidence/](evidence/) | Supporting evidence archive |
 
-## Running the Python log analysis
+## Run the Python detector
 
-1. Keep `detect_task3.py` and `dvwa_task3_logs.txt` in the same directory.
-2. Run:
+The script expects a file named `dvwa_task3_logs.txt` in the same working directory.
 
 ```bash
+cd scripts
 python3 detect_task3.py
 ```
 
-3. The script writes `task3_detection_alerts.txt`.
+**Important:** The repository currently does not include `dvwa_task3_logs.txt`. Add the actual exported log file to `evidence/` (or place a copy beside the script before running it). Do not create a fabricated log file.
 
-The script uses pattern matching. Its alerts indicate suspicious test patterns in the supplied lab logs; they do not independently prove successful exploitation or represent a dedicated SIEM deployment.
+The script writes `task3_detection_alerts.txt` in its working directory. Its matches are pattern-based indicators for analyst review; they do not independently prove successful exploitation.
 
 ## Scope and limitations
 
 - Testing was performed in a local DVWA lab.
 - Python-based log analysis was used as a lightweight detection approach.
 - Wazuh/Splunk and Suricata rules are not claimed as deployed or executed.
+- `rules/task3_sample_rules.txt` contains illustrative rule logic, not rules executed in a SIEM.
 - Review and redact sensitive information in logs, screenshots, and the PDF before sharing publicly.
 
 ## Author
